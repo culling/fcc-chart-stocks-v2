@@ -31,7 +31,10 @@ var Schema = mongoose.Schema;
 
 var StockSchema = new Schema({
     ticker:     String,
-    exchange:   String
+    exchange:   {
+        type: String,
+        default: "NASD"
+    }
 });
 
 

@@ -5,12 +5,8 @@ import React from 'react';
 import {render} from 'react-dom';
 
 //Navbars
-import PrimaryNavbar    from './Navbars/PrimaryNavbar.jsx';
 
 //Containers
-import HomeContainer    from "./Containers/HomeContainer.jsx";
-import ProfileContainer from "./Containers/ProfileContainer.jsx";
-//import BoardContainer   from "./Containers/BoardContainer.jsx";
 import StockContainer   from "./Containers/StockContainer.jsx";
 
 //Modals
@@ -84,39 +80,11 @@ class ReactContainer extends React.Component{
 
     render(){
         return(
-            <div>
-                <header>
-                <b>My Bookswap</b>
-                <PrimaryNavbar user={this.state.user} setActiveContainer={  this._setActiveContainer.bind(this) } />
-                    {this.state.user &&
-                        <div>
-                            <b>Current User {this.state.user.username}</b>
-                        </div>
-                    }
+            <div className="row">
+                <header className="col s9 m12">
+                <b>Free Code Camp - Chart the Stock Market</b>
                 </header>
-                    {/*
-                    <NewUserModal />
-                    <LoginUserModal getUser={ this._getUser.bind(this) } />
-                    
-                    <SearchBar              />
-                    */}
 
-                    {(this.state.activeContainer === "#home-container")&&
-                    <HomeContainer          user={this.state.user} twitterUser={this.state.twitterUser} />
-                    }
-                    {(this.state.activeContainer === "#profile-container")&&
-                    <ProfileContainer       user={this.state.user} getUser={ this._getUser.bind(this) } />
-                    }
-                    {/*(this.state.activeContainer === "#myBoard-container")&&
-                    <div id="myBoard-container" >
-                        <BoardContainer     user={this.state.user} filterUser={this.state.user} />
-                    </div>
-                    */}
-                    {/*(this.state.activeContainer === "#allBoard-container")&&
-                    <div id="allBoard-container" >
-                        <BoardContainer     user={this.state.user}  filterUser={{username:null, type:"all"}}/>
-                    </div>
-                    */}
 
                     <StockContainer />
 

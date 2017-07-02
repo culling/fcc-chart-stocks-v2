@@ -35,12 +35,11 @@ router.get("/:id", function(req, res){
 })
 
 router.post("/", function(req, res){
+    console.log("Post to /api/stock Hit" );
     var sentStocks = req.body.stocks;
 
-    sentStocks.map((stock)=>{
-        stocksController.update(stock, function(response){
-
-        });
+    stocksController.update(sentStocks, function(response){
+        //console.log(response);
     });
 
     res.end();

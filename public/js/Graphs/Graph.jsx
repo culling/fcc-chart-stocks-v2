@@ -36,7 +36,7 @@ class Graph extends React.Component{
         if(alreadyExists != true){
         jQuery.ajax({
             method: "GET",
-            url:('/api/stock/' + companyID),
+            url:('/api/stock/' + companyID ),
             success: (rawResult)=> {
                 var graphSeriesData = [];
                 graphSeriesData     = this.state.graphSeriesData.map((cd)=>{return cd});
@@ -84,8 +84,10 @@ class Graph extends React.Component{
         }
 
     return(
-        <div>
+        <div className="row">
+        <div className="col s9 m12">
             <div id="stock-graph-reactRendered"></div> 
+        </div>
         </div>
     )};
 

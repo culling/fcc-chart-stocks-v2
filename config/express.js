@@ -30,7 +30,7 @@ module.exports  = function(){
         //On new state broadcast
         socket.on("new state", function(data){
             console.log("New State");
-            console.log(data);
+            //console.log(data);
             io.sockets.emit("new state", data);
         });
 

@@ -44,7 +44,7 @@ class SearchBar extends React.Component{
 
     saveStateToDB(newStateDiff) {
         
-        jQuery.ajax({ url: '/api/stocks', 
+        jQuery.ajax({ url: '/api/stock', 
             contentType: 'application/json', // for request
             dataType: 'json', //for response
             type: 'POST',
@@ -95,13 +95,18 @@ class SearchBar extends React.Component{
         
         var searchBar = <input ref={(input)=> this.search = input} id="searchText" 
             className="col s9" placeholder={this.state.searchText} 
-            defaultValue={""} name="searchText" type="text" ></input>            
+            defaultValue={""} name="searchText" type="text" ></input>
         //}
 
         return (
         <div className="row">
             <form id="search" className="col s12" action="/" method="get" onSubmit={this._formSubmit.bind(this) }  >
-                {searchBar}
+                <div className="col s5 m9">
+                    <input ref={(input)=> this.search = input} id="searchText" 
+                     placeholder={this.state.searchText} 
+                    defaultValue={""} name="searchText" type="text" ></input>
+
+                </div>
                 <span className="input-group-btn col s3">
                     <button type="submit" className="btn btn-block btn-primary"  > <i className="material-icons">search</i>  </button>
                 </span>

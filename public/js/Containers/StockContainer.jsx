@@ -98,14 +98,17 @@ class StockContainer extends React.Component{
         return(
             <div>
                 
-                {(this.state.stocks.length > 0) &&            
+                {/*(this.state.stocks.length > 0) &&            
                     <SearchBar stocks={this.state.stocks} />
-                }
+                */}
+                <SearchBar stocks={this.state.stocks} />
                 
                 <div className="row">
+                    <div className="col s12">
                     {this.state.stocks.map((stock, i) => 
                         (<StockCard key={i} stock={stock} closeClick={this._closeClick.bind(this) } />)
                     )}
+                    </div>
                 </div>
 
                 {this.state.stocks.length > 0 &&

@@ -91,34 +91,59 @@ exports.lookup = function(ticker, callback){
           newStockObject.value  = Number.parseInt(lines[i].split(",")[1]);
 
 
-          if((newStockObject.value != undefined)&&  (newStockObject.value != null)) { 
+          if((newStockObject.value != undefined)&&  (newStockObject.value != null)&&  (newStockObject.value != "null")) { 
             var formattedArrayObject = [newStockObject.phpTime, newStockObject.value];
             stockObjectArray.push(formattedArrayObject);
           }
         }
         
       }
+      //Sort before sending
+      stockObjectArray.sort((prevStock, currStock)=>{
+        if(prevStock[0] < currStock[0]){
+          return -1;
+        };
+        if(prevStock[0] > currStock[0]){
+          return 1; 
+        };
+        if(prevStock[0] == currStock[0]){
+          return 0;
+        };
+      });
+
+      
       callback(stockObjectArray);
     });
   });
 };
 
 
-exports.update = function(document, callback){
+exports.update = function(stocks, callback){
   console.log("UPDATE");
-      StockModel.collection.drop(function(){
-        stocks.create(document);
+  console.log(stocks);
+  StockModel.collection.drop(
+    function(){
+      stocks.map((stock)=>{
+        //console.log(stock);
+        var stockObject = new StockModel({ticker: stock});
+        console.log(stockObject);
+        stockObject.save();
       });
+
+    }
+  );
+
 }
 
 exports.findAll = function(callback){
+  console.log("findAll - stock.controller.server.js - hit")
   //stocks.findAll(callback);
   StockModel.find({}, function(err, found){
       if(err){
         console.error(err);
         callback(err, null);
       };
-      
+      console.log(found);
       callback(null, found);
       
     });
