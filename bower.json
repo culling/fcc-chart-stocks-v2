@@ -1,0 +1,26 @@
+{
+  "name": "fcc-stocks-v2",
+  "description": "Chart the Stock Market",
+  "main": "server.js",
+  "authors": [
+    "culling <culling66@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "socket.io": "^2.0.1",
+    "materialize": "^0.98.2",
+    "components-font-awesome": "^4.7.0",
+    "masonry": "^4.2.0",
+    "highcharts": "^5.0.12"
+  }
+}
