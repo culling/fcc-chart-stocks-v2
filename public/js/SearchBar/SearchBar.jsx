@@ -27,6 +27,12 @@ class SearchBar extends React.Component{
         }.bind(this));        
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.stocks !== this.state.stocks){
+            this.setState({stocks: nextProps.stocks});
+        }
+    }
+
     //NETWORK Sync
     networkSetState(newStateDiff) {
         // do some awesome network things here
@@ -99,9 +105,9 @@ class SearchBar extends React.Component{
         //}
 
         return (
-        <div className="row">
-            <form id="search" className="col s12" action="/" method="get" onSubmit={this._formSubmit.bind(this) }  >
-                <div className="col s5 m9">
+
+            <form id="search" action="/" method="get" onSubmit={this._formSubmit.bind(this) }  >
+                <div className="col s9">
                     <input ref={(input)=> this.search = input} id="searchText" 
                      placeholder={this.state.searchText} 
                     defaultValue={""} name="searchText" type="text" ></input>
@@ -111,7 +117,6 @@ class SearchBar extends React.Component{
                     <button type="submit" className="btn btn-block btn-primary"  > <i className="material-icons">search</i>  </button>
                 </span>
             </form>
-        </div>
     )}
 
 }

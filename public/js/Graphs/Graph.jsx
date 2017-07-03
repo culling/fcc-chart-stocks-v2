@@ -84,11 +84,9 @@ class Graph extends React.Component{
         }
 
     return(
-        <div className="row">
-        <div className="col s9 m12">
+
             <div id="stock-graph-reactRendered"></div> 
-        </div>
-        </div>
+
     )};
 
 }

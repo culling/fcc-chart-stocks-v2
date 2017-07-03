@@ -101,8 +101,11 @@ class StockContainer extends React.Component{
                 {/*(this.state.stocks.length > 0) &&            
                     <SearchBar stocks={this.state.stocks} />
                 */}
-                <SearchBar stocks={this.state.stocks} />
-                
+                <div className="row">
+                    <div  className="col s12" >
+                        <SearchBar stocks={this.state.stocks} />
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col s12">
                     {this.state.stocks.map((stock, i) => 
@@ -112,7 +115,11 @@ class StockContainer extends React.Component{
                 </div>
 
                 {this.state.stocks.length > 0 &&
+                    <div className="row">
+                        <div className="col s11 m12">
                     <Graph stocks={this.state.stocks} />
+                        </div>
+                    </div>
                 }
 
             </div>
